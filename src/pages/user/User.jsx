@@ -3,6 +3,7 @@ import doctor1 from '../../assets/img/doctors/doctor-thumb-01.jpg'
 import patient1 from '../../assets/img/patients/patient1.jpg'
 import ModalPopup from "../../components/ModalPopUp/ModalPopup";
 import DataTable from 'datatables.net-dt';
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 const User = () => {
     useEffect(() => {
@@ -10,17 +11,7 @@ const User = () => {
   })
   return (
     <>
-      {/* <!-- Page Header --> */}
-      <div className="page-header">
-        <div className="row">
-          <div className="col-sm-12">
-            <h3 className="page-title">Welcome Admin!</h3>
-            <ul className="breadcrumb">
-              <li className="breadcrumb-item active">Users</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+       <PageHeader title="User"/>
         <ModalPopup target="userModalPopUp">
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut odit excepturi quod provident dolorum neque facilis maxime nostrum quae ea ipsa sunt magni, dolor explicabo et eaque possimus natus debitis accusantium quo itaque minima aspernatur! Earum dicta, commodi eligendi ea pariatur quibusdam. Et nulla eaque saepe assumenda vitae asperiores deleniti vel iste tenetur in nesciunt soluta rem, earum commodi ducimus pariatur dolores qui dolorem error ipsa corrupti. Perferendis fuga quis magnam inventore ullam neque? Repellat ducimus dolores recusandae et consequuntur distinctio quasi quo, facere ipsa fugiat optio culpa eaque obcaecati eum omnis adipisci praesentium quisquam alias beatae! Voluptatum, ipsa tenetur!</p>

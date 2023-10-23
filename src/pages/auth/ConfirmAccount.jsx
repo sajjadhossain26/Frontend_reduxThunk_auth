@@ -1,42 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 // import logoWhite from "../../assets/img/logo-white.png";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { findResetUser } from "../../features/auth/authApiSlice";
-import { createToast } from "../../utils/toast";
-import { setMessageEmpty } from "../../features/auth/authSlice";
-
-const Forgot = () => {
-  const [input, setInput] = useState()
-  const {error, message} = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+import { Link, useNavigate } from 'react-router-dom';
+import { resetCodeConfirm } from '../../features/auth/authApiSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { createToast } from '../../utils/toast';
+import logoWhite from "../../assets/img/logo-white.png";
+import Cookies from 'js-cookie'
+import { setMessageEmpty } from '../../features/auth/authSlice';
 
 
-  const handleResetSubmit = (e) => {
-    e.preventDefault()
 
-   dispatch(findResetUser({email: input}))
-  }
+const ConfirmAccount = () => {
 
-  useEffect(() => {
-    if(error){
-      createToast(error)
-      dispatch(setMessageEmpty())
+    const [input, setInput] = useState()
+    const dispatch = useDispatch()
+    const {user, message, error} = useSelector((state) => state.auth)
+    const navigate = useNavigate()
+  
 
+
+    const handleResetSubmit = (e) => {
+      e.preventDefault()
+      dispatch(resetCodeConfirm({code: input}))
     }
-    if(message){
-      createToast(message, "success")
-      dispatch(setMessageEmpty())
 
-      navigate('/confirm_account')
-    }
-  },[error, message])
+    useEffect(() => {
+        if(error) {
+            createToast(error)
+          dispatch(setMessageEmpty())
 
+        }
+        if(message) {
+          createToast(message, 'success')
+            dispatch(setMessageEmpty())
+            navigate("/new_password")
 
+        }
+        
+    },[message, error])
+
+    console.log("code",Cookies.get('findUser'));
   return (
-    <>
-      <div className="main-wrapper login-body">
+    <div>
+       <div className="main-wrapper login-body">
         <div className="login-wrapper">
           <div className="container">
             <div className="loginbox">
@@ -45,7 +51,7 @@ const Forgot = () => {
               </div>
               <div className="login-right">
                 <div className="login-right-wrap">
-                  <h1>Login</h1>
+                  <h1>Confirm Your account</h1>
                   <p className="account-subtitle">Access to our dashboard</p>
 
                   {/* <!-- Form --> */}
@@ -54,7 +60,7 @@ const Forgot = () => {
                       <input
                         className="form-control"
                         type="text"
-                        placeholder="Email"
+                        placeholder="verification code"
                         name="email"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
@@ -66,26 +72,21 @@ const Forgot = () => {
                         className="btn btn-primary btn-block"
                         type="submit"
                       >
-                        Send
+                        Confirm
                       </button>
                     </div>
                   </form>
                   {/* <!-- /Form --> */}
 
-                  <div className="text-center dont-have">
-                    Don’t have an account?{" "}
-                    <Link to="/login" href="register.html">
-                      Login
-                    </Link>
-                  </div>
+                 
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default Forgot;
+export default ConfirmAccount

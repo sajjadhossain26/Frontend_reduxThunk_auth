@@ -9,7 +9,10 @@ import { logoutUser } from "../../features/auth/authApiSlice";
 import { createToast } from "../../utils/toast";
 import { setMessageEmpty } from "../../features/auth/authSlice";
 
+
 const Header = () => {
+
+
   const { isOpen, toogleMenu, dropDownRef } = useDropdownPopupControl();
   const {
     isOpen: isNotification,
@@ -73,7 +76,7 @@ const Header = () => {
           <li className="nav-item dropdown noti-dropdown" ref={notificationRef}>
             <a
               onClick={notificationMenu}
-              href="#"
+              
               className="dropdown-toggle nav-link"
             >
               <i className="fe fe-bell"></i>{" "}
@@ -213,15 +216,15 @@ const Header = () => {
           <li className="nav-item dropdown has-arrow" ref={dropDownRef}>
             <a
               onClick={toogleMenu}
-              href="#"
+              
               className="dropdown-toggle nav-link"
             >
               <span className="user-img">
                 <img
                   className="rounded-circle"
-                  src={avatar1}
+                  src={user?.photo? user.photo:  "https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg" }
+                  alt={user?.name}
                   width="31"
-                  alt="Ryan Taylor"
                 />
               </span>
             </a>
@@ -233,14 +236,14 @@ const Header = () => {
                 <div className="user-header">
                   <div className="avatar avatar-sm">
                     <img
-                      src={avatar1}
-                      alt="User Image"
+                      src={user?.photo? user.photo:  "https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg" }
+                      alt={user?.name}
                       className="avatar-img rounded-circle"
                     />
                   </div>
                   <div className="user-text">
-                    <h6>Ryan Taylor</h6>
-                    <p className="text-muted mb-0">Administrator</p>
+                    <h6>{user?.name}</h6>
+                    <p className="text-muted mb-0">{user?.role}</p>
                   </div>
                 </div>
                 <a className="dropdown-item" href="profile.html">

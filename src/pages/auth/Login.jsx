@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import logoWhite from "../../assets/img/logo-white.png";
+// import logo from "../../assets/img/logo-white.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createToast } from "../../utils/toast";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../features/auth/authApiSlice";
+// import { loginUser } from "../../features/auth/authApiSlice";
 import { setMessageEmpty } from "../../features/auth/authSlice";
+import { loginUser } from "../../features/auth/authApiSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const Login = () => {
           <div className="container">
             <div className="loginbox">
               <div className="login-left">
-                <img className="img-fluid" src={logoWhite} alt="Logo" />
+                {/* <img className="img-fluid" src={logo} alt="Logo" /> */}
               </div>
               <div className="login-right">
                 <div className="login-right-wrap">

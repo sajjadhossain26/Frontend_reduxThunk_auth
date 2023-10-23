@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import whiteLogo from "../../assets/img/logo-white.png";
+// import whiteLogo from "../../assets/img/logo-white.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../features/auth/authApiSlice";
@@ -72,7 +72,7 @@ const Register = () => {
           <div className="container">
             <div className="loginbox">
               <div className="login-left">
-                <img className="img-fluid" src={whiteLogo} alt="Logo" />
+                {/* <img className="img-fluid" src={whiteLogo} alt="Logo" /> */}
               </div>
               <div className="login-right">
                 <div className="login-right-wrap">

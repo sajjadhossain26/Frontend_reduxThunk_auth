@@ -23,7 +23,6 @@ export const loginUser = createAsyncThunk("auth/loginUser", async (data) => {
      const response = await axios.post('http://localhost:5050/api/auth/login', data, {
       withCredentials: true,
      })
-     console.log(response.data);
      return response.data
    } catch (error) {
     throw new Error(error.response.data.message)
@@ -32,7 +31,7 @@ export const loginUser = createAsyncThunk("auth/loginUser", async (data) => {
 })
 
 
-// Login user
+// Logout user
 export const logoutUser = createAsyncThunk("auth/logoutUser", async (data) => {
    try {
      const response = await axios.post('http://localhost:5050/api/auth/logout', "", {
@@ -58,4 +57,46 @@ export const loggedInUser = createAsyncThunk("auth/loggedInUser", async () => {
     throw new Error(error.response.data.message)
    }
    
+})
+
+
+
+// Find user
+export const findResetUser = createAsyncThunk("auth/findResetUser", async (data) => {
+  try {
+    console.log(data);
+    const response = await axios.post('http://localhost:5050/api/auth/find-user', data, {
+     withCredentials: true,
+    })
+    return response.data
+  } catch (error) {
+   throw new Error(error.response.data.message)
+  }
+  
+})
+
+// Reset verification code confirm
+export const resetCodeConfirm = createAsyncThunk("auth/resetCodeConfirm", async (data) => {
+  try {
+    const response = await axios.post('http://localhost:5050/api/auth/confirm_code', data, {
+     withCredentials: true,
+    })
+    return response.data
+  } catch (error) {
+   throw new Error(error.response.data.message)
+  }
+  
+})
+
+// Reset verification code confirm
+export const newPassword = createAsyncThunk("auth/newPassword", async (data) => {
+  try {
+    const response = await axios.post('http://localhost:5050/api/auth/new_password', data, {
+     withCredentials: true,
+    })
+    return response.data
+  } catch (error) {
+   throw new Error(error.response.data.message)
+  }
+  
 })
